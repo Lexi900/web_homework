@@ -5,7 +5,14 @@
   <title>CodePen - a63</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css'><link rel="stylesheet" href="./style.css">
-
+ <style>
+       .slideanimate{
+  visibility:hidden;
+}
+.slide{
+  visibility:visible;
+}
+    </style>
 </head>
 <body>
 
@@ -21,6 +28,25 @@
 </div>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script><script  src="./script.js"></script>
-
+<script>
+$(function () {
+	var winh = $(window).height();
+	$(window).scroll(function () {
+		var scrolled = $(window).scrollTop();
+		$(".slideanimate").each(function () {
+			if (scrolled > $(this).data("pos")) {
+				$(this).addClass(
+					"animate__animated slide animate__" + $(this).data("direction")
+				);
+			}
+			if (scrolled == 0) {
+				$(this).removeClass(
+					"animate__animated slide animate__" + $(this).data("direction")
+				);
+			}
+		});
+	});
+});
+</script>
 </body>
 </html>
